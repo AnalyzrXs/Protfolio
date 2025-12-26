@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Saloni Singh | AI/ML Portfolio</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin:0;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color:#fff;
+      transition:0.5s;
+    }
+    body.light { background:#fdfdfd; color:#222; }
+
+    header { text-align:center; padding:40px; }
+    header h1 { font-size:3em; animation: fadeIn 2s; }
+    header p { font-size:1.2em; animation: fadeIn 3s; }
+
+    /* Buttons */
+    button {
+      background: linear-gradient(45deg, #ff6f61, #ff3b2e);
+      color:white;
+      padding:12px 30px;
+      border:none;
+      border-radius:30px;
+      cursor:pointer;
+      font-size:1em;
+      transition: all 0.3s ease;
+      margin:5px;
+      box-shadow:0 4px 15px rgba(0,0,0,0.3);
+    }
+    button:hover { transform:scale(1.1); box-shadow:0 6px 20px rgba(255,111,97,0.6); }
+
+    /* Slideshow */
+    .slideshow-container { position:relative; max-width:100%; height:400px; margin:auto; overflow:hidden; border-radius:15px; }
+    .slide { display:none; position:absolute; width:100%; height:100%; animation: fade 1.5s; }
+    .slide img { width:100%; height:100%; object-fit:cover; border-radius:15px; }
+    .caption { position:absolute; bottom:30px; left:50%; transform:translateX(-50%);
+      background:rgba(0,0,0,0.6); padding:10px 20px; border-radius:10px; font-size:1.2em; }
+
+    /* Sections */
+    section { padding:60px 20px; text-align:center; opacity:0; transform:translateY(50px); transition:all 1s ease; }
+    section.visible { opacity:1; transform:translateY(0); }
+    h2 { font-size:2em; margin-bottom:20px; }
+
+    /* Cards */
+    .card {
+      background:rgba(255,255,255,0.1);
+      padding:20px;
+      border-radius:15px;
+      margin:10px;
+      display:inline-block;
+      width:250px;
+      transition:0.3s;
+      box-shadow:0 4px 15px rgba(0,0,0,0.3);
+    }
+    .card:hover { transform:translateY(-10px); background:rgba(255,255,255,0.2); }
+    body.light .card { background:#fff; color:#222; }
+    
+    @keyframes fade { from{opacity:.4} to{opacity:1} }
+    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Saloni Singh</h1>
+    <p>Artificial Intelligence & Machine Learning Student</p>
+    <button onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">✨ More About Me</button>
+    <button onclick="toggleTheme()">🌗 Toggle Theme</button>
+  </header>
+
+  <!-- Slideshow -->
+  <div class="slideshow-container">
+    <div class="slide"><img src="traffic.jpg"><div class="caption">Optimizing Mumbai Traffic</div></div>
+    <div class="slide"><img src="safecross.jpg"><div class="caption">SafeCross Pedestrian Safety</div></div>
+    <div class="slide"><img src="research.jpg"><div class="caption">LLM Hallucination Study</div></div>
+    <div class="slide"><img src="education.jpg"><div class="caption">Diploma in AI/ML</div></div>
+    <div class="slide"><img src="hackathon.jpg"><div class="caption">Hackathon Participation</div></div>
+  </div>
+
+  <section id="about">
+    <h2>Profile</h2>
+    <p>AI/ML student with hands-on experience in end-to-end projects, focused on real-world problem solving.</p>
+  </section>
+
+  <section id="skills">
+    <h2>Key Skills</h2>
+    <div class="card">Machine Learning</div>
+    <div class="card">Deep Learning & CV</div>
+    <div class="card">Mathematics</div>
+    <div class="card">Programming & Tools</div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="card">Optimizing Mumbai Traffic</div>
+    <div class="card">SafeCross System</div>
+    <div class="card">LLM Hallucination Study</div>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <p>Diploma in Artificial Intelligence & Machine Learning — Final Year</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: saloni@email.com</p>
+    <button onclick="location.href='mailto:saloni@email.com'">📩 Connect With Me</button>
+  </section>
+
+  <script>
+    // Scroll animation
+    const sections = document.querySelectorAll("section");
+    window.addEventListener("scroll", () => {
+      sections.forEach(sec => {
+        const rect = sec.getBoundingClientRect();
+        if(rect.top < window.innerHeight - 100) sec.classList.add("visible");
+      });
+    });
+
+    // Theme toggle
+    function toggleTheme() {
+      document.body.classList.toggle("light");
+    }
+
+    // Slideshow
+    let slideIndex = 0;
+    showSlides();
+    function showSlides() {
+      let slides = document.getElementsByClassName("slide");
+      for (let i = 0; i < slides.length; i++) slides[i].style.display = "none";
+      slideIndex++;
+      if (slideIndex > slides.length) slideIndex = 1;
+      slides[slideIndex-1].style.display = "block";
+      setTimeout(showSlides, 4000); // 4s per slide
+    }
+  </script>
+</body>
+</html>
